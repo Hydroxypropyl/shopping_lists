@@ -1,9 +1,12 @@
 import { Pool } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
 
 const CONCURRENT_CONNECTIONS = 2;
+const databaseUrl = Deno.env.get("DATABASE_URL");
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL environment variable is not set.");
+}
 
-
-const connectionPool = new Pool({},
+const connectionPool = new Pool(databaseUrl,
                                  CONCURRENT_CONNECTIONS,
                                   true
                                 );
