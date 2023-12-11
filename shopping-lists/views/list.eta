@@ -1,6 +1,6 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1><% it.listName%>/h1>
+<h1><% it.listName%></h1>
 
 <h2>Content of the list</h2>
 
@@ -8,25 +8,25 @@
   <% it.non_collected.forEach((item) => {%>
   <li>
     <%=item.name%>
-    <form method="POST" action="/lists/<%=it.id%>/items/<%=item.id%>/collect">
-    <input type="submit" data_test="<%=item.name%>" value="Mark collected!"/>
+    <form method="POST" action="/lists/<%=it.list.id%>/items/<%=item.id%>/collect">
+    <input type="submit" test="<%=item.name%>" value="Mark collected!"/>
     </form>
   </li>
 <%}); %>
   <% it.collected.forEach((item) => {%>
   <li>
     <del><%=item.name%></del>
-    <form method="POST" action="/lists/<%=it.id%>/items/<%=item.id%>/collect">
-    <input type="submit" data_test="<%=item.name%>" value="Mark collected!"/>
+    <form method="POST" action="/lists/<%=it.list.id%>/items/<%=item.id%>/collect">
+    <input type="submit" test="<%=item.name%>" value="Mark collected!"/>
     </form>
   </li>
 <%}); %>
 </ul>
 
 <h2>Add a new entry to the list:</h2>
-<form method="POST" action="/lists/<%= it.id %>/items">
+<form method="POST" action="/lists/<%= it.list.id %>/items">
 	Name: <input type="text" name="name">
-	<input type="submit" data_test="add_item" value="Add item">
+	<input type="submit" test="add_item" value="Add item">
 </form>
 
 <a href="/lists">Shopping lists</a>

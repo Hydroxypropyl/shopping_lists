@@ -9,7 +9,7 @@ const addItem = async (request) => {
   const list_id = urlParts[2];
   const formData = await request.formData();
   const name = formData.get("name");
-  await listsService.createItem(name, list_id);
+  await listsService.addItemToList(name, list_id);
   return requestUtils.redirectTo(`/lists/${list_id}`);
 };
 

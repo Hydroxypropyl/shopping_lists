@@ -8,18 +8,18 @@
   <% it.lists.forEach((list) => {%>
   <li>
     <a href="/lists/<%= list.id %>"><%=list.name%></a> 
-      <form method="POST action="/lists/<%= list.id %>/deactivate"">
-        <input data-test="deactivate_<%= list.name %>" type="submit" value="Deactivate list!"/>
+      <form method="POST" action="/lists/<%= list.id %>/deactivate">
+        <input type="submit" test="deactivate_<%= list.name %>"  value="Deactivate list!"/>
       </form>
   </li>
   
 <%}); %>
 </ul>
 
-<h2>Create a new list:</h2>
+<h2>Create a new list</h2>
 <form method="POST" action="/lists">
 	Title : <input type="text" name="name">
-	<input type="submit" data_test="create" value="Create">
+	<input type="submit" test="create" value="Create">
 </form>
 
 <a href="/">Main page</a>

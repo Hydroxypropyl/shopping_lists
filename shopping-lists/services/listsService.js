@@ -2,7 +2,7 @@ import { executeQuery } from "../database/database.js";
 
 // ============== for lists =================
 const findListById = async (id) => {
-  const rows = await executeQuery(`SELECT * FROM lists WHERE id = ${ id }`);
+  const rows = await executeQuery(`SELECT * FROM shopping_lists WHERE id = ${ id }`);
 
   if (rows && rows.length > 0) {
     return rows[0];
@@ -12,19 +12,19 @@ const findListById = async (id) => {
 };
 
 const findAllLists = async() => {
-  return await executeQuery(`SELECT * FROM lists`);
+  return await executeQuery(`SELECT * FROM shopping_lists`);
 };
 
 const findActiveLists = async() => {
-  return await executeQuery(`SELECT* FROM lists WHERE active=TRUE`);
+  return await executeQuery(`SELECT* FROM shopping_lists WHERE active=TRUE`);
 };
 
 const createList = async (name) => {
-  await executeQuery(`INSERT INTO lists (name) VALUES ('${ name }')`);
+  await executeQuery(`INSERT INTO shopping_lists (name) VALUES ('${ name }')`);
 };
 
 const deactivateList = async(id) => {
-  await executeQuery(`UPDATE lists SET active = FALSE WHERE id = ${ id }`);
+  await executeQuery(`UPDATE shopping_lists SET active = FALSE WHERE id = ${ id }`);
 };
 
 const countList = async () => {
