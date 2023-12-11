@@ -1,6 +1,6 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1><% it.listName%></h1>
+<h1><% it.list.name%></h1>
 
 <h2>Content of the list</h2>
 
